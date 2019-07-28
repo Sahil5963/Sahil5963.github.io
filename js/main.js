@@ -189,7 +189,7 @@ $(".demo1").each(function(index) {
 });
 
 $("#project-full__backdrop").click(function() {
-  projectFull.reverse(1);
+  projectFull.reverse(0.8);
   $("body").removeClass("disable-scrolling");
 });
 
@@ -200,10 +200,7 @@ $(".project-full__expand").click(function() {
 });
 
 $(".project-full__close").click(function() {
-  TweenMax.to(".project-full__wrapper", 0.1, {
-    width: "85%"
-  });
-  projectFull.reverse(1);
+  projectFull.reverse(0.6);
   $("body").removeClass("disable-scrolling");
 });
 
