@@ -1996,7 +1996,7 @@ a:hover {
 .project-section {
   display: -ms-grid;
   display: grid;
-  margin: 3rem auto;
+  margin: 1rem auto;
   width: 96%;
   -ms-grid-columns: (1fr)[12];
       grid-template-columns: repeat(12, 1fr);
@@ -2570,8 +2570,17 @@ a:hover {
 
 .project-full__actions {
   position: fixed;
-  top: 10px;
-  right: 12px;
+  top: 16px;
+  right: 28px;
+}
+
+@media only screen and (max-width: 620px) {
+  .project-full__actions {
+    top: unset;
+    bottom: 10px;
+    right: 20px;
+    z-index: 40;
+  }
 }
 
 .project-full__actions button {

@@ -1,6 +1,14 @@
 // Tranparent navbar
 
 $(document).ready(function() {
+  console.log($(window).width());
+
+  if ($(document).scrollTop() > 50) {
+    if ($(".navbar").hasClass("navbar--transparent")) {
+      $(".navbar").removeClass("navbar--transparent");
+    }
+  }
+
   $(window).scroll(function() {
     if ($(document).scrollTop() > 50) {
       if ($(".navbar").hasClass("navbar--transparent")) {
@@ -177,6 +185,7 @@ projectFull
   .to(".project-full__backdrop", 0.1, { opacity: 1 })
   .to(".project-full__wrapper", 0.6, {
     width: "85%",
+    // width: $(window).width() > 600 ? "85%" : "100%",
     ease: Quint.easeInOut
   })
   .to(".project-full__content", 1, { opacity: 1 });
@@ -186,6 +195,12 @@ $(".demo1").each(function(index) {
     $(".project-full__expand").show();
     projectFull.play();
     $("body").addClass("disable-scrolling");
+
+    // if ($(window).width() < 600) {
+    //   $(".project-full__expand").hide();
+    // } else {
+    //   $(".project-full__expand").show();
+    // }
   });
 });
 
