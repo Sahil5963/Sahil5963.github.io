@@ -176,7 +176,7 @@ projectFull
   .to(".project-full__wrapper", 0.1, { opacity: 1 })
   .to(".project-full__backdrop", 0.1, { opacity: 1 })
   .to(".project-full__wrapper", 0.6, {
-    width: "90%",
+    width: "85%",
     ease: Quint.easeInOut
   })
   .to(".project-full__content", 1, { opacity: 1 });
@@ -188,7 +188,21 @@ $(".demo1").each(function(index) {
   });
 });
 
-$("#backdrop").click(function() {
+$("#project-full__backdrop").click(function() {
+  projectFull.reverse(1);
+  $("body").removeClass("disable-scrolling");
+});
+
+$(".project-full__expand").click(function() {
+  TweenMax.to(".project-full__wrapper", 0.2, {
+    width: "100%"
+  });
+});
+
+$(".project-full__close").click(function() {
+  TweenMax.to(".project-full__wrapper", 0.1, {
+    width: "85%"
+  });
   projectFull.reverse(1);
   $("body").removeClass("disable-scrolling");
 });

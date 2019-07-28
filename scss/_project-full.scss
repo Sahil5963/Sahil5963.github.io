@@ -36,4 +36,48 @@
     min-height: 100%;
     opacity: 0;
   }
+
+  &__actions {
+    position: fixed;
+    top: 10px;
+    right: 30px;
+
+    button {
+      border: none;
+      border-radius: 120px;
+      padding: 0.4rem 1rem;
+      font-size: 0.88rem;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &__close {
+    background: #000;
+    color: #fff;
+  }
+
+  &__expand {
+    background: #365cf3;
+    color: #fff;
+  }
+
+  // &:hover {
+  //   cursor: pointer;
+  // }
+
+  // svg {
+  //   height: 42px;
+
+  //   .a {
+  //     fill: rgb(42, 42, 42);
+  //   }
+  //   .b {
+  //     fill: none;
+  //     stroke: #fff;
+  //     stroke-linecap: round;
+  //     stroke-width: 6px;
+  //   }
+  // }
 }
