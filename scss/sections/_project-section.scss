@@ -29,7 +29,12 @@
     font-family: "Montserrat", sans-serif;
     font-size: 1.6rem;
     font-weight: 700;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1rem;
+    @media only screen and (max-width: 720px) {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0rem;
+    }
   }
   &__designation {
     margin-bottom: 1rem;

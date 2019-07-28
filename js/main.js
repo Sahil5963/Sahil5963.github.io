@@ -183,6 +183,7 @@ projectFull
 
 $(".demo1").each(function(index) {
   $(this).click(function() {
+    $(".project-full__expand").show();
     projectFull.play();
     $("body").addClass("disable-scrolling");
   });
@@ -197,6 +198,8 @@ $(".project-full__expand").click(function() {
   TweenMax.to(".project-full__wrapper", 0.2, {
     width: "100%"
   });
+
+  $(".project-full__expand").hide();
 });
 
 $(".project-full__close").click(function() {
