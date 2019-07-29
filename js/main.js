@@ -146,9 +146,379 @@ function resetPath() {
 
 // Project Full Coponent
 
-const projectFull = new TimelineMax({ paused: true });
+// const projectFull = new TimelineMax({ paused: true });
 
-let fetchedData = null;
+// let fetchedData = null;
+
+// projectFull
+//   .to(".project-full", 0.1, { display: "block" })
+//   .to(".project-full__wrapper", 0.1, { opacity: 1 })
+//   .to(".project-full__backdrop", 0.1, { opacity: 1 })
+//   .to(".project-full__wrapper", 0.6, {
+//     width: "85%",
+//     // width: $(window).width() > 600 ? "85%" : "100%",
+//     ease: Quint.easeInOut
+//   })
+//   .to(".project-full__content", 1, { opacity: 1 });
+
+// $(".demo1").each(function(index) {
+//   $(this).click(function() {
+//     $(".project-full__expand").show();
+//     projectFull.play();
+//     $("body").addClass("disable-scrolling");
+
+//     // if ($(window).width() < 600) {
+//     //   $(".project-full__expand").hide();
+//     // } else {
+//     //   $(".project-full__expand").show();
+//     // }
+//   });
+// });
+
+// $("#project-full__backdrop").click(function() {
+//   projectFull.reverse(0.8);
+//   $("body").removeClass("disable-scrolling");
+// });
+
+// $(".project-full__expand").click(function() {
+//   TweenMax.to(".project-full__wrapper", 0.2, {
+//     width: "100%"
+//   });
+
+//   $(".project-full__expand").hide();
+// });
+
+// $(".project-full__close").click(function() {
+//   projectFull.reverse(0.6);
+//   $("body").removeClass("disable-scrolling");
+// });
+
+// const data = (function() {
+//   var json = null;
+//   $.ajax({
+//     async: false,
+//     global: false,
+//     url: "/sample.json",
+//     dataType: "json",
+//     success: function(data) {
+//       json = data;
+//     }
+//   });
+//   return json;
+// })();
+
+// PROJECTS COLLECTION VUE
+
+
+const projectFull = new TimelineMax({paused:true});
+
+
+
+
+const ProjectFull = {
+
+  data() {
+
+    return{
+      project:{}
+    }
+
+  },
+
+  template: `
+  
+  <div class="project-full" v-on:leave="leave()">
+
+  <div class="project-full__backdrop"  id="project-full__backdrop" v-on:click="goBack()" >
+
+  </div>
+
+  <div class="project-full__wrapper">
+
+    <div class="project-full__content">
+
+      <!-- <div class="project-full__close" id="project-full__close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="74" height="74" viewBox="0 0 74 74"><defs>
+          </defs><g transform="translate(-1492 -44)"><rect class="a" width="74" height="74" rx="37" transform="translate(1492 44)"/><g transform="translate(6 7)"><line class="b" x2="26.108" y2="26.108" transform="translate(1509.5 62.5)"/><line class="b" x1="26.108" y2="26.108" transform="translate(1509.5 62.5)"/></g></g></svg>
+      </div> -->
+
+      <div class="project-full__actions">
+          <button class="project-full__close" v-on:click="goBack()" >Close</button>
+          <button class="project-full__expand" v-on:click="expandFull()">Expand Full</button>
+        </div>
+
+
+        <div class="project-section">
+            <div class="project-section__header project-section__header--mobile px-2 mt-2">
+              <h2 class="project-section__name">{{project.name}}</h2>
+      
+            </div>
+      
+            <div class="project-section__image">
+              <img v-bind:src="project.thumbnail"  alt="">
+              <div class="project-section__info">
+                  <label>Project Lead : </label> Rohit Joshi<br>
+                <label>Status : </label> Running <br>
+                <label>Start Date: </label> 12, July 2018 <br>
+                </div>
+      
+                
+                
+      
+                <div class="project-section__contribute">
+                  <div>
+                    <label>Source Code Available</label>
+                    <img src="./image/svg/github1.svg" alt="">
+                  </div>
+                  <div>
+                      <label>Appretiate Designs</label>
+                      <img src="./image/svg/dribble1.svg" alt="">
+                    </div>
+                </div>
+      
+            </div>
+            <div class="project-section__content">
+      
+                <div class="project-section__header project-section__header--desk">
+                    <h2 class="project-section__name">{{project.name}}</h2>
+                  </div>
+      
+                  <div class="project-section__overview py-1">
+      
+                    <h5 class="project-section__sub-heading">Description</h5>
+                    <p>{{project.description}}</p>
+      
+                  </div>
+      
+                  <div class="project-section__divider"></div>
+      
+                  
+      
+                  <div class="project-section__technologies-container py-1">
+      
+                      <h5 class="project-section__sub-heading">Technologies Involved</h5>
+                      <div class="project-section__technologies">
+                        <div class="project-section__technology">PHP</div>
+                        <div class="project-section__technology">Laravel</div>
+                        <div class="project-section__technology">HTML</div>
+                        <div class="project-section__technology">Java</div>
+                        <div class="project-section__technology">OOPS</div>
+                        <div class="project-section__technology">C++</div>
+                      </div>
+        
+                    </div>
+                    <div class="project-section__divider"></div>
+      
+                    <div class="project-section__feature py-1">
+      
+                        <h5 class="project-section__sub-heading">Features of the application</h5>
+                        <ul class="project-section__feature__list">
+                          <li class="project-section__feature__item">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur perspiciatis dicta corrupti ullam neque illum repellendus, quasi fugit quis inventore cupiditate tempora, ut ipsa ratione! Corporis, obcaecati alias facilis odio ratione animi officia, ut fugiat assumenda modi, eum neque consequatur!</li>
+                          <li class="project-section__feature__item">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis est vero sit dolor placeat.</li>
+                          <li class="project-section__feature__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, ducimus?</li>
+                        </ul>
+          
+                      </div>
+
+                    
+      
+            </div>
+
+            
+
+            <div class="project-section__full-width">
+                <div class="project-section__divider"></div>
+
+              <div class="project-section__screens">
+
+                  <h5 class="project-section__sub-heading project-section__screens__heading">Features of the application</h5>
+                  <div class="project-section__screens__item">
+                      <a :href="project.screen1" target="_blank">
+                        <img  v-bind:src="project.screen1"  alt="" alt="" class="project-section__screen">
+                        </a>
+                  </div>
+                  
+                  <div class="project-section__screens__item">
+                      <a :href="project.screen2" target="_blank">
+                          <img  v-bind:src="project.screen2"  alt="" alt="" class="project-section__screen">
+                          </a>
+              </div>
+
+                <div class="project-section__screens__item">
+                    <a :href="project.screen3" target="_blank">
+                        <img  v-bind:src="project.screen3"  alt="" alt="" class="project-section__screen">
+                        </a>
+              </div>
+
+              </div>
+
+
+                <div class="project-section__divider"></div>
+      
+                <div class="project-section__members py-1 px-4">
+
+                    <h5 class="project-section__sub-heading">Project Members</h5>
+
+                    <div class="project-section__members__avtars">
+                      <div class="project-section__members__avtar">
+                        <div class="project-section__members__avtar__image">
+                            <img src="./image/contributor1.jpg" alt="">
+                        </div>
+                        <div class="project-section__members__avtar__content">
+                          <h4 class="project-section__members__avtar__name">Emma Roberts</h4>
+                          <label for="" class="project-section__members__avtar__role">Front-Ent Developer</label>
+                        </div>
+                        
+                      </div>
+                      <div class="project-section__members__avtar">
+                          <div class="project-section__members__avtar__image">
+                              <img src="./image/contributor1.jpg" alt="">
+                          </div>
+                          <div class="project-section__members__avtar__content">
+                            <h4 class="project-section__members__avtar__name">Emma Roberts</h4>
+                            <label for="" class="project-section__members__avtar__role">Front-Ent Developer</label>
+                          </div>
+                          
+                        </div>
+                        <div class="project-section__members__avtar">
+                            <div class="project-section__members__avtar__image">
+                                <img src="./image/contributor1.jpg" alt="">
+                            </div>
+                            <div class="project-section__members__avtar__content">
+                              <h4 class="project-section__members__avtar__name">Emma Roberts</h4>
+                              <label for="" class="project-section__members__avtar__role">Front-Ent Developer</label>
+                            </div>
+                            
+                          </div>
+                    </div>
+
+
+      
+                  </div>
+
+                  <div class="project-section__appreciate py-4">
+
+                    <button>Appreciate <span>40</span></button>
+
+
+                  </div>
+
+
+            </div>
+      
+      
+      
+          </div>
+      
+    </div>
+    
+    
+  </div>
+
+
+</div>`,
+
+created() {
+  
+  this.fetchData();
+
+},
+watch: {
+
+  '$route': 'fetchData'
+},
+
+methods:{
+
+
+  expand(){
+projectFull.play();
+
+  },
+
+  expandFull(){
+
+    projectFull
+  .to(".project-full__wrapper", 0.2, {
+    width: "100%",
+  });
+    
+  },
+
+  fetchData(){
+
+  
+
+    fetch("/sample.json")
+        .then(response=>{
+          return response.json();
+        })
+        .then(myJson => {
+
+          for (i = 0; i < myJson.length; i++) {
+            if (myJson[i].id == 1) {
+              this.project = myJson[i];
+    
+            }
+          }
+        });
+
+// axios.get('/sample.json')
+//   .then((response) =>{
+
+//     console.log(response.data[0]);
+
+//     this.project = {...response.data[0]};
+//   })
+  },
+  goBack(){
+
+    this.$router.go(-1);
+
+  }
+
+},
+
+
+
+mounted() {
+
+  projectFull
+  .to(".project-full", 0.1, { display: "block" })
+  .to(".project-full__wrapper", 0.1, { opacity: 1 })
+  .to(".project-full__backdrop", 0.1, { opacity: 1 })
+  .to(".project-full__wrapper", 0.6, {
+    width: "85%",
+    // width: $(window).width() > 600 ? "85%" : "100%",
+    ease: Quint.easeInOut
+  })
+  .to(".project-full__content", 1, { opacity: 1 });
+  
+  $("body").addClass("disable-scrolling");
+
+  this.expand();
+
+},
+
+
+beforeDestroy() {
+  $("body").removeClass("disable-scrolling");
+  console.log("before destroy");
+},
+
+
+
+};
+
+const routes = [
+  { path: "/project-full" , component:ProjectFull }
+
+];
+
+const router = new VueRouter({
+  routes
+});
+
 
 var projectsCollection = new Vue({
   el: "#projects-collection",
@@ -175,65 +545,15 @@ var projectsCollection = new Vue({
             }
           }
         });
+    },
+
+    goBack: function() {
+      console.log("go back");
+      this.$router.go(-1);
     }
-  }
+  },
+  components: {
+    'project-full': ProjectFull
+  },
+  router
 });
-
-projectFull
-  .to(".project-full", 0.1, { display: "block" })
-  .to(".project-full__wrapper", 0.1, { opacity: 1 })
-  .to(".project-full__backdrop", 0.1, { opacity: 1 })
-  .to(".project-full__wrapper", 0.6, {
-    width: "85%",
-    // width: $(window).width() > 600 ? "85%" : "100%",
-    ease: Quint.easeInOut
-  })
-  .to(".project-full__content", 1, { opacity: 1 });
-
-$(".demo1").each(function(index) {
-  $(this).click(function() {
-    $(".project-full__expand").show();
-    projectFull.play();
-    $("body").addClass("disable-scrolling");
-
-    // if ($(window).width() < 600) {
-    //   $(".project-full__expand").hide();
-    // } else {
-    //   $(".project-full__expand").show();
-    // }
-  });
-});
-
-$("#project-full__backdrop").click(function() {
-  projectFull.reverse(0.8);
-  $("body").removeClass("disable-scrolling");
-});
-
-$(".project-full__expand").click(function() {
-  TweenMax.to(".project-full__wrapper", 0.2, {
-    width: "100%"
-  });
-
-  $(".project-full__expand").hide();
-});
-
-$(".project-full__close").click(function() {
-  projectFull.reverse(0.6);
-  $("body").removeClass("disable-scrolling");
-});
-
-// const data = (function() {
-//   var json = null;
-//   $.ajax({
-//     async: false,
-//     global: false,
-//     url: "/sample.json",
-//     dataType: "json",
-//     success: function(data) {
-//       json = data;
-//     }
-//   });
-//   return json;
-// })();
-
-console.log(fetchedData);
