@@ -94,6 +94,9 @@ TweenMax.to(".hero-banner__smoke--2", 6, {
 var mobileNav = new TimelineMax();
 
 $(".navbar__toggler").click(function() {
+
+  console.log("hey");
+
   mobileNav
 
     .to($(".mobile-nav"), 0.1, { display: "block" })
@@ -144,73 +147,10 @@ function resetPath() {
   );
 }
 
-// Project Full Coponent
-
-// const projectFull = new TimelineMax({ paused: true });
-
-// let fetchedData = null;
-
-// projectFull
-//   .to(".project-full", 0.1, { display: "block" })
-//   .to(".project-full__wrapper", 0.1, { opacity: 1 })
-//   .to(".project-full__backdrop", 0.1, { opacity: 1 })
-//   .to(".project-full__wrapper", 0.6, {
-//     width: "85%",
-//     // width: $(window).width() > 600 ? "85%" : "100%",
-//     ease: Quint.easeInOut
-//   })
-//   .to(".project-full__content", 1, { opacity: 1 });
-
-// $(".demo1").each(function(index) {
-//   $(this).click(function() {
-//     $(".project-full__expand").show();
-//     projectFull.play();
-//     $("body").addClass("disable-scrolling");
-
-//     // if ($(window).width() < 600) {
-//     //   $(".project-full__expand").hide();
-//     // } else {
-//     //   $(".project-full__expand").show();
-//     // }
-//   });
-// });
-
-// $("#project-full__backdrop").click(function() {
-//   projectFull.reverse(0.8);
-//   $("body").removeClass("disable-scrolling");
-// });
-
-// $(".project-full__expand").click(function() {
-//   TweenMax.to(".project-full__wrapper", 0.2, {
-//     width: "100%"
-//   });
-
-//   $(".project-full__expand").hide();
-// });
-
-// $(".project-full__close").click(function() {
-//   projectFull.reverse(0.6);
-//   $("body").removeClass("disable-scrolling");
-// });
-
-// const data = (function() {
-//   var json = null;
-//   $.ajax({
-//     async: false,
-//     global: false,
-//     url: "/sample.json",
-//     dataType: "json",
-//     success: function(data) {
-//       json = data;
-//     }
-//   });
-//   return json;
-// })();
-
 // PROJECTS COLLECTION VUE
 
 
-const projectFull = new TimelineMax({paused:true});
+const projectFull = new TimelineMax();
 
 
 
@@ -472,8 +412,25 @@ projectFull.play();
 //   })
   },
   goBack(){
+    projectFull
+    .to(".project-full__content", 0.2, { opacity: 0 })
+    .to(".project-full__wrapper", 0.6, {
+      width: "0%",
+      // width: $(window).width() > 600 ? "85%" : "100%",
+      ease: Quint.easeInOut
+    })
+    .to(".project-full", 0.1, { display: "none" });
 
-    this.$router.go(-1);
+
+    setTimeout(()=>{
+
+      this.$router.go(-1);
+    }, 1000);
+    
+
+  
+
+    
 
   }
 
@@ -496,7 +453,6 @@ mounted() {
   
   $("body").addClass("disable-scrolling");
 
-  this.expand();
 
 },
 
