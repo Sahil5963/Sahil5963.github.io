@@ -1,6 +1,16 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: "Product-Sans";
+}
+
+@font-face {
+  font-family: "Product-Sans";
+  src: url("../fonts/Product Sans Regular.ttf");
+}
+
+p {
+  font-family: "Product-Sans";
 }
 
 .intro-banner {
@@ -8,7 +18,7 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
-  background: #242424;
+  background: #141414;
   display: -ms-grid;
   display: grid;
   -webkit-box-align: center;
@@ -25,6 +35,18 @@ body {
   stroke: #fff;
   stroke-miterlimit: 10;
   stroke-width: 2px;
+}
+
+@media only screen and (max-width: 420px) {
+  .intro-banner__svg--desk {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 420px) {
+  .intro-banner__svg--mobile {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 700px) {
@@ -117,6 +139,18 @@ body {
   stroke-dashoffset: 206px;
   -webkit-animation: intro-banner__name__animate 2s ease forwards 1.5s;
           animation: intro-banner__name__animate 2s ease forwards 1.5s;
+}
+
+.intro-banner h2 {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.intro-banner p {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 300;
 }
 
 @-webkit-keyframes intro-banner__name__animate {

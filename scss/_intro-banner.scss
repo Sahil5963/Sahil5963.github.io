@@ -3,7 +3,7 @@
   width: 100vw;
   margin: 0;
   padding: 0;
-  background: #242424;
+  background: #141414;
   display: grid;
   align-items: center;
   justify-items: center;
@@ -19,6 +19,18 @@
     stroke: #fff;
     stroke-miterlimit: 10;
     stroke-width: 2px;
+
+    &--desk {
+      @media only screen and (max-width: 420px) {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      @media only screen and (min-width: 420px) {
+        display: none;
+      }
+    }
 
     @media only screen and (max-width: 700px) {
       width: 70%;
@@ -86,6 +98,18 @@
         animation: intro-banner__name__animate 2s ease forwards 1.5s;
       }
     }
+  }
+
+  h2 {
+    font-size: 3rem;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  p {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 300;
   }
 }
 

@@ -1,4 +1,14 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: "Product-Sans";
+}
+
+@font-face {
+  font-family: "Product-Sans";
+  src: url("../fonts/Product\ Sans\ Regular.ttf");
+}
+
+p {
+  font-family: "Product-Sans";
 }
