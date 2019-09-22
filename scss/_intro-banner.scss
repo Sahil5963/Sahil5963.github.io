@@ -21,14 +21,16 @@
     stroke-width: 2px;
 
     &--desk {
-      @media only screen and (max-width: 420px) {
-        display: none;
+      display: none;
+      @media only screen and (min-width: 421px) {
+        display: block;
       }
     }
 
     &--mobile {
-      @media only screen and (min-width: 420px) {
-        display: none;
+      display: none;
+      @media only screen and (max-width: 420px) {
+        display: block;
       }
     }
 
