@@ -18,25 +18,35 @@ body {
 }
 
 .intro-banner__svg {
-  width: 70%;
   margin: auto;
+  fill: transparent;
+  -webkit-animation: intro-banner__name__fill 1s ease forwards 3.2s;
+          animation: intro-banner__name__fill 1s ease forwards 3.2s;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  stroke-width: 2px;
+}
+
+@media only screen and (max-width: 700px) {
+  .intro-banner__svg {
+    width: 70%;
+  }
 }
 
 .intro-banner__svg svg {
   width: 400px;
 }
 
+@media only screen and (min-width: 1000px) {
+  .intro-banner__svg svg {
+    width: 600px;
+  }
+}
+
 @media only screen and (max-width: 700px) {
   .intro-banner__svg svg {
     width: 100%;
   }
-}
-
-.intro-banner__svg__path {
-  fill: none;
-  stroke: #fff;
-  stroke-miterlimit: 10;
-  stroke-width: 3px;
 }
 
 .intro-banner__svg__path:nth-child(1) {
@@ -118,6 +128,24 @@ body {
 @keyframes intro-banner__name__animate {
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes intro-banner__name__fill {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: #fff;
+  }
+}
+
+@keyframes intro-banner__name__fill {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: #fff;
   }
 }
 /*# sourceMappingURL=style.css.map */

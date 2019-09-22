@@ -12,20 +12,29 @@
   }
 
   &__svg {
-    width: 70%;
     margin: auto;
+    fill: transparent;
+    animation: intro-banner__name__fill 1s ease forwards 3.2s;
+
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+
+    @media only screen and (max-width: 700px) {
+      width: 70%;
+    }
     svg {
       width: 400px;
+
+      @media only screen and (min-width: 1000px) {
+        width: 600px;
+      }
+
       @media only screen and (max-width: 700px) {
         width: 100%;
       }
     }
     &__path {
-      fill: none;
-      stroke: #fff;
-      stroke-miterlimit: 10;
-      stroke-width: 3px;
-
       &:nth-child(1) {
         stroke-dasharray: 429px;
         stroke-dashoffset: 429px;
@@ -83,5 +92,14 @@
 @keyframes intro-banner__name__animate {
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+@keyframes intro-banner__name__fill {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: #fff;
   }
 }
